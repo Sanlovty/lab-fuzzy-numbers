@@ -27,9 +27,17 @@ public:
 	void setTuple(const double& left, const double& middle, const double& right) const;
 
 	void multiply(const FuzzyNumber& other) const;
+	void multiply(const tuple<double, double, double>& tuple) const;
+	void multiply(const double& left, const double& middle, const double& right) const;
 	void subtract(const FuzzyNumber& other) const;
+	void subtract(const tuple<double, double, double>& tuple) const;
+	void subtract(const double& left, const double& middle, const double& right) const;
 	void divide(const FuzzyNumber& other) const;
+	void divide(const tuple<double, double, double>& tuple) const;
+	void divide(const double& left, const double& middle, const double& right) const;
 	void add(const FuzzyNumber& other) const;
+	void add(const tuple<double, double, double>& tuple) const;
+	void add(const double& left, const double& middle, const double& right) const;
 
 	bool equals(const FuzzyNumber& other) const;
 	bool notEquals(const FuzzyNumber& other) const;
@@ -40,4 +48,5 @@ public:
 	FuzzyNumber& operator=(const FuzzyNumber& other);
 	FuzzyNumber& operator=(const tuple<double, double, double>& tuple);
 };
+
 #endif

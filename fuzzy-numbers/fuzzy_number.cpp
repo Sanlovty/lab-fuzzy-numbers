@@ -90,11 +90,41 @@ void FuzzyNumber::multiply(const FuzzyNumber& other) const
 		*other.right_;
 }
 
+void FuzzyNumber::multiply(const tuple<double, double, double>& tuple) const
+{
+	*left_ = *middle_ * get<1>(tuple) - get<1>(tuple) * *left_ - *middle_ * get<0>(tuple) + *left_ * get<0>(tuple);
+	*middle_ = *middle_ * get<1>(tuple);
+	*right_ = *middle_ * get<1>(tuple) + get<1>(tuple) * *right_ + *middle_ * get<2>(tuple) + *right_ *
+		get<2>(tuple);
+}
+
+void FuzzyNumber::multiply(const double& left, const double& middle, const double& right) const
+{
+	*left_ = *middle_ * middle - middle * *left_ - *middle_ * left + *left_ * left;
+	*middle_ = *middle_ * middle;
+	*right_ = *middle_ * middle + middle * *right_ + *middle_ * right + *right_ *
+		right;
+}
+
 void FuzzyNumber::subtract(const FuzzyNumber& other) const
 {
 	*left_ = *middle_ - *other.middle_ - *left_ - *other.left_;
 	*middle_ = *middle_ - *other.middle_;
 	*right_ = *middle_ - *other.middle_ + *right_ + *other.right_;
+}
+
+void FuzzyNumber::subtract(const tuple<double, double, double>& tuple) const
+{
+	*left_ = *middle_ - get<1>(tuple) - *left_ - get<0>(tuple);
+	*middle_ = *middle_ - get<1>(tuple);
+	*right_ = *middle_ - get<1>(tuple) + *right_ + get<2>(tuple);
+}
+
+void FuzzyNumber::subtract(const double& left, const double& middle, const double& right) const
+{
+	*left_ = *middle_ - middle - *left_ - left;
+	*middle_ = *middle_ - middle;
+	*right_ = *middle_ - middle + *right_ + right;
 }
 
 void FuzzyNumber::divide(const FuzzyNumber& other) const
@@ -104,11 +134,39 @@ void FuzzyNumber::divide(const FuzzyNumber& other) const
 	*right_ = (*middle_ + *right_) / (*other.middle_ - *other.left_);
 }
 
+void FuzzyNumber::divide(const tuple<double, double, double>& tuple) const
+{
+	*left_ = (*middle_ - *left_) / (get<1>(tuple) + get<2>(tuple));
+	*middle_ = *middle_ / get<1>(tuple);
+	*right_ = (*middle_ + *right_) / (get<1>(tuple) - get<0>(tuple));
+}
+
+void FuzzyNumber::divide(const double& left, const double& middle, const double& right) const
+{
+	*left_ = (*middle_ - *left_) / (middle + right);
+	*middle_ = *middle_ / middle;
+	*right_ = (*middle_ + *right_) / (middle - left);
+}
+
 void FuzzyNumber::add(const FuzzyNumber& other) const
 {
 	*left_ = *middle_ + *other.middle_ - *left_ - *other.left_;
 	*middle_ = *middle_ + *other.middle_;
 	*right_ = *middle_ + *other.middle_ + *right_ + *other.right_;
+}
+
+void FuzzyNumber::add(const tuple<double, double, double>& tuple) const
+{
+	*left_ = *middle_ + get<1>(tuple) - *left_ - get<0>(tuple);
+	*middle_ = *middle_ + get<1>(tuple);
+	*right_ = *middle_ + get<1>(tuple) + *right_ + get<2>(tuple);
+}
+
+void FuzzyNumber::add(const double& left, const double& middle, const double& right) const
+{
+	*left_ = *middle_ + middle - *left_ - left;
+	*middle_ = *middle_ + middle;
+	*right_ = *middle_ + middle + *right_ + right;
 }
 
 bool FuzzyNumber::equals(const FuzzyNumber& other) const
