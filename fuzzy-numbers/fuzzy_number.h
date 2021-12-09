@@ -4,88 +4,88 @@
 
 class FuzzyNumber
 {
-	/* Та самая тройка чисел, которая указана в задании: 
-	 *	left_ это x - e1
-	 *	middle_ это x
-	 *	right_ это x + e1
+	/* РўР° СЃР°РјР°СЏ С‚СЂРѕР№РєР° С‡РёСЃРµР», РєРѕС‚РѕСЂР°СЏ СѓРєР°Р·Р°РЅР° РІ Р·Р°РґР°РЅРёРё: 
+	 *	left_ СЌС‚Рѕ x - e1
+	 *	middle_ СЌС‚Рѕ x
+	 *	right_ СЌС‚Рѕ x + e1
 	 */
 	double* left_;
 	double* middle_;
 	double* right_;
 public:
-	// Конструктор без параметров
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Р±РµР· РїР°СЂР°РјРµС‚СЂРѕРІ
 	FuzzyNumber();
 
-	// Конструктор с 3мя параметрами в виде вещественных чисел
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ 3РјСЏ РїР°СЂР°РјРµС‚СЂР°РјРё РІ РІРёРґРµ РІРµС‰РµСЃС‚РІРµРЅРЅС‹С… С‡РёСЃРµР»
 	FuzzyNumber(const double& left, const double& middle, const double& right);
 
-	// Конструктор с 1 параметром в виде кортежа из 3х вещественных чисел
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ 1 РїР°СЂР°РјРµС‚СЂРѕРј РІ РІРёРґРµ РєРѕСЂС‚РµР¶Р° РёР· 3С… РІРµС‰РµСЃС‚РІРµРЅРЅС‹С… С‡РёСЃРµР»
 	FuzzyNumber(const tuple<double, double, double>& tuple);
 
-	// Конструктор копирования
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
 	FuzzyNumber(const FuzzyNumber& other);
 
-	// Деструктор
+	// Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
 	~FuzzyNumber();
 
 
-	// Методы получения числовых значений полей left_,middle_,right_  соответственно
+	// РњРµС‚РѕРґС‹ РїРѕР»СѓС‡РµРЅРёСЏ С‡РёСЃР»РѕРІС‹С… Р·РЅР°С‡РµРЅРёР№ РїРѕР»РµР№ left_,middle_,right_  СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ
 	double getLeft() const;
 	double getMiddle() const;
 	double getRight() const;
-	// Методы получения кортежа, состоящего из полей left_,middle_,right_
+	// РњРµС‚РѕРґС‹ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕСЂС‚РµР¶Р°, СЃРѕСЃС‚РѕСЏС‰РµРіРѕ РёР· РїРѕР»РµР№ left_,middle_,right_
 	tuple<double, double, double> getValues() const;
 
-	// Методы присвоения нового числового значения полям left_,middle_,right_  соответственно
+	// РњРµС‚РѕРґС‹ РїСЂРёСЃРІРѕРµРЅРёСЏ РЅРѕРІРѕРіРѕ С‡РёСЃР»РѕРІРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЏРј left_,middle_,right_  СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ
 	void setLeft(const double& value) const;
 	void setMiddle(const double& value) const;
 	void setRight(const double& value) const;
 
-	// Методы присвоения кортежа, состоящего из 3х вещественных чисел полям left_,middle_,right_
+	// РњРµС‚РѕРґС‹ РїСЂРёСЃРІРѕРµРЅРёСЏ РєРѕСЂС‚РµР¶Р°, СЃРѕСЃС‚РѕСЏС‰РµРіРѕ РёР· 3С… РІРµС‰РµСЃС‚РІРµРЅРЅС‹С… С‡РёСЃРµР» РїРѕР»СЏРј left_,middle_,right_
 	void setTuple(const tuple<double, double, double>& tuple) const;
-	// Методы присвоения3х вещественных чисел полям left_,middle_,right_
+	// РњРµС‚РѕРґС‹ РїСЂРёСЃРІРѕРµРЅРёСЏ3С… РІРµС‰РµСЃС‚РІРµРЅРЅС‹С… С‡РёСЃРµР» РїРѕР»СЏРј left_,middle_,right_
 	void setTuple(const double& left, const double& middle, const double& right) const;
 
-	// Вариации метода умножения, который преобразует поля left_,middle_,right_
-	// ,умножая их на обьект FuzzyNumber, кортеж из 3х чисел, 3 числа соответственно
+	// Р’Р°СЂРёР°С†РёРё РјРµС‚РѕРґР° СѓРјРЅРѕР¶РµРЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ РїСЂРµРѕР±СЂР°Р·СѓРµС‚ РїРѕР»СЏ left_,middle_,right_
+	// ,СѓРјРЅРѕР¶Р°СЏ РёС… РЅР° РѕР±СЊРµРєС‚ FuzzyNumber, РєРѕСЂС‚РµР¶ РёР· 3С… С‡РёСЃРµР», 3 С‡РёСЃР»Р° СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ
 	void multiply(const FuzzyNumber& other) const;
 	void multiply(const tuple<double, double, double>& tuple) const;
 	void multiply(const double& left, const double& middle, const double& right) const;
 
-	// Вариации метода вычитания, который преобразует поля left_,middle_,right_
-	// ,вычитая из них обьект FuzzyNumber, кортеж из 3х чисел, 3 числа соответственно
+	// Р’Р°СЂРёР°С†РёРё РјРµС‚РѕРґР° РІС‹С‡РёС‚Р°РЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ РїСЂРµРѕР±СЂР°Р·СѓРµС‚ РїРѕР»СЏ left_,middle_,right_
+	// ,РІС‹С‡РёС‚Р°СЏ РёР· РЅРёС… РѕР±СЊРµРєС‚ FuzzyNumber, РєРѕСЂС‚РµР¶ РёР· 3С… С‡РёСЃРµР», 3 С‡РёСЃР»Р° СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ
 	void subtract(const FuzzyNumber& other) const;
 	void subtract(const tuple<double, double, double>& tuple) const;
 	void subtract(const double& left, const double& middle, const double& right) const;
 
-	// Вариации метода деления, который преобразует поля left_,middle_,right_
-	// ,деля их на обьект FuzzyNumber, кортеж из 3х чисел, 3 числа соответственно
+	// Р’Р°СЂРёР°С†РёРё РјРµС‚РѕРґР° РґРµР»РµРЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ РїСЂРµРѕР±СЂР°Р·СѓРµС‚ РїРѕР»СЏ left_,middle_,right_
+	// ,РґРµР»СЏ РёС… РЅР° РѕР±СЊРµРєС‚ FuzzyNumber, РєРѕСЂС‚РµР¶ РёР· 3С… С‡РёСЃРµР», 3 С‡РёСЃР»Р° СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ
 	void divide(const FuzzyNumber& other) const;
 	void divide(const tuple<double, double, double>& tuple) const;
 	void divide(const double& left, const double& middle, const double& right) const;
 
-	// Вариации метода сложения, который преобразует поля left_,middle_,right_
-	// ,прибавляя к ним объект FuzzyNumber, кортеж из 3х чисел, 3 числа соответственно
+	// Р’Р°СЂРёР°С†РёРё РјРµС‚РѕРґР° СЃР»РѕР¶РµРЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ РїСЂРµРѕР±СЂР°Р·СѓРµС‚ РїРѕР»СЏ left_,middle_,right_
+	// ,РїСЂРёР±Р°РІР»СЏСЏ Рє РЅРёРј РѕР±СЉРµРєС‚ FuzzyNumber, РєРѕСЂС‚РµР¶ РёР· 3С… С‡РёСЃРµР», 3 С‡РёСЃР»Р° СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ
 	void add(const FuzzyNumber& other) const;
 	void add(const tuple<double, double, double>& tuple) const;
 	void add(const double& left, const double& middle, const double& right) const;
 
-	// Метод, который возвращает True, если обьект FuzzyNumber, который был введён
-	// в качестве параметра, совпадает с нашим объектом (равен ему)
+	// РњРµС‚РѕРґ, РєРѕС‚РѕСЂС‹Р№ РІРѕР·РІСЂР°С‰Р°РµС‚ True, РµСЃР»Рё РѕР±СЊРµРєС‚ FuzzyNumber, РєРѕС‚РѕСЂС‹Р№ Р±С‹Р» РІРІРµРґС‘РЅ
+	// РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР°, СЃРѕРІРїР°РґР°РµС‚ СЃ РЅР°С€РёРј РѕР±СЉРµРєС‚РѕРј (СЂР°РІРµРЅ РµРјСѓ)
 	bool equals(const FuzzyNumber& other) const;
 
-	// Метод, который возвращает True, если обьект FuzzyNumber, который был введён
-	// в качестве параметра, НЕ совпадает с нашим объектом (НЕ равен ему)
+	// РњРµС‚РѕРґ, РєРѕС‚РѕСЂС‹Р№ РІРѕР·РІСЂР°С‰Р°РµС‚ True, РµСЃР»Рё РѕР±СЊРµРєС‚ FuzzyNumber, РєРѕС‚РѕСЂС‹Р№ Р±С‹Р» РІРІРµРґС‘РЅ
+	// РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР°, РќР• СЃРѕРІРїР°РґР°РµС‚ СЃ РЅР°С€РёРј РѕР±СЉРµРєС‚РѕРј (РќР• СЂР°РІРµРЅ РµРјСѓ)
 	bool notEquals(const FuzzyNumber& other) const;
 
-	// Перегруженный оператор вывода 
+	// РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР° 
 	friend ostream& operator<<(ostream& os, const FuzzyNumber& fuzzyNumber);
-	// Перегруженный оператор ввода 
+	// РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ РІРІРѕРґР° 
 	friend istream& operator>>(istream& is, const FuzzyNumber& fuzzyNumber);
 
-	// Перегруженный оператор равно для обьекта FuzzyNumber  
+	// РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СЂР°РІРЅРѕ РґР»СЏ РѕР±СЊРµРєС‚Р° FuzzyNumber  
 	FuzzyNumber& operator=(const FuzzyNumber& other);
-	// Перегруженный оператор равно для кортежа из 3х чисел
+	// РџРµСЂРµРіСЂСѓР¶РµРЅРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ СЂР°РІРЅРѕ РґР»СЏ РєРѕСЂС‚РµР¶Р° РёР· 3С… С‡РёСЃРµР»
 	FuzzyNumber& operator=(const tuple<double, double, double>& tuple);
 };
 
