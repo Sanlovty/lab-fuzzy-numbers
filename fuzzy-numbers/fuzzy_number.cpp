@@ -123,7 +123,10 @@ bool FuzzyNumber::notEquals(const FuzzyNumber& other) const
 
 FuzzyNumber& FuzzyNumber::operator=(const FuzzyNumber& other)
 {
-	setTuple(other.getValues());
+	if (&other != this)
+	{
+		setTuple(other.getValues());
+	}
 	return *this;
 }
 
