@@ -9,7 +9,7 @@ FuzzyNumber::FuzzyNumber(const double& left,
                          const double& right)
 	: left_(new double(left)),
 	  middle_(new double(middle)),
-	  right_(new double(middle))
+	  right_(new double(right))
 {
 }
 
