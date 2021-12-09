@@ -21,8 +21,10 @@ FuzzyNumber::FuzzyNumber(const tuple<double, double, double>& tuple)
 }
 
 FuzzyNumber::FuzzyNumber(const FuzzyNumber& other)
+	: left_(new double(other.getLeft())),
+	  middle_(new double(other.getMiddle())),
+	  right_(new double(other.getRight()))
 {
-	*this = FuzzyNumber(other.getValues());
 }
 
 FuzzyNumber::~FuzzyNumber()
